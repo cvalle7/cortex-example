@@ -10,6 +10,7 @@ async def hello():
 
 @router.post('/chat')
 async def chat(data: Cortex_data):
+    print(data)
     try:
         message = await get_chat(data)
         return {"message": "This is a post", "data": message}
