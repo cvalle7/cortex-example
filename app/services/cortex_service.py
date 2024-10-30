@@ -17,8 +17,8 @@ def get_chat(message: str):
                 "role": "user"
             }
         ],
-        "model": "mistral",
-        "stream": True,
+        "model": model,
+        "stream": False,
         "max_tokens": 4096,
         "stop": ["End"],
         "frequency_penalty": 0.2,
