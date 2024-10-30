@@ -1,0 +1,9 @@
+# Ignorar carpetas de caché de Python
+__pycache__/
+
+# Ignorar archivos de compilación de Python
+*.py[cod]
+
+# Ignorar otros archivos de configuración
+*.env
+*.DS_Store
