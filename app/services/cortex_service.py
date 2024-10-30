@@ -10,7 +10,6 @@ model = "llama3.1:8b-gguf-q4-ks"
 url = f"http://{host}:{port}/v1/chat/completions"
 
 def get_chat(message: str):
-
     payload = {
         "messages": [
             {
