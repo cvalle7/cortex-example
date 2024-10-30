@@ -1,12 +1,32 @@
 from fastapi import APIRouter, HTTPException
 from app.models.cortex_mode import Cortex_data
-from app.services.cortex_service import get_chat
+from app.services.cortex_service import get_chat, start_model, stop_model
 
 router = APIRouter()
 
-@router.get('/hello')
-def hello():
-    return {"message": "hello"}
+@router.get('/start')
+def start():
+    try:
+        response = start_model()
+        return {"data": response}
+    except ValueError as error:
+        raise HTTPException(status_code=400, detail=f"Error, {error}")
+    except Exception as error:
+        raise HTTPException(
+            status_code=500, detail=f"Internal Server Error, {error}")
+
+
+@router.get('/stop')
+def stop():
+    try:
+        response = stop_model()
+        return {"data": response}
+    except ValueError as error:
+        raise HTTPException(status_code=400, detail=f"Error, {error}")
+    except Exception as error:
+        raise HTTPException(
+            status_code=500, detail=f"Internal Server Error, {error}")
+
 
 @router.post('/chat')
 def chat(data: Cortex_data):
@@ -16,4 +36,5 @@ def chat(data: Cortex_data):
     except ValueError as error:
         raise HTTPException(status_code=400, detail=f"Error, {error}")
     except Exception as error:
-        raise HTTPException(status_code=500, detail=f"Internal Server Error, {error}")
+        raise HTTPException(
+            status_code=500, detail=f"Internal Server Error, {error}")
