@@ -12,7 +12,7 @@ def hello():
 def chat(data: Cortex_data):
     try:
         message = get_chat(data.message)
-        return {"data": message}
+        return {"data": message.choices.message.content}
     except ValueError as error:
         raise HTTPException(status_code=400, detail=f"Error, {error}")
     except Exception as error:
