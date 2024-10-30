@@ -30,5 +30,4 @@ def get_chat(message: str):
     headers = {"Content-Type": "application/json"}
     
     response = requests.post(url, json=payload, headers=headers)
-    print(response.json())
-    return response.json()
+    return response.choices.message.content.json()
