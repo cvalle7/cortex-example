@@ -9,7 +9,7 @@ port=os.getenv('CORTEX_PORT')
 model = "llama3.1:8b-gguf-q4-ks"
 url = f"http://{host}:{port}/v1/chat/completions"
 
-async def get_chat(message: str):
+def get_chat(message: str):
 
     payload = {
         "messages": [
@@ -30,6 +30,6 @@ async def get_chat(message: str):
 
     headers = {"Content-Type": "application/json"}
     
-    response = await requests.post(url, json=payload, headers=headers)
+    response = requests.post(url, json=payload, headers=headers)
     
     return response.json()
