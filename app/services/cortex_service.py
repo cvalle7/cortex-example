@@ -2,8 +2,11 @@ import requests
 from dotenv import load_dotenv
 import os
 
+host=os.getenv('CORTEX_HOST')
+port=os.getenv('CORTEX_PORT')
 model = "llama3.1:8b-gguf-q4-ks"
-url = f"http://{os.getenv('CORTEX_HOST')}:{int(os.getenv('CORTEX_PORT'))}/v1/chat/completions"
+url = f"http://{host}:{port}/v1/chat/completions"
+
 
 
 async def get_chat(message: str):
